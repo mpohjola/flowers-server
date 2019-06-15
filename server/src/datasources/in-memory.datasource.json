@@ -1,0 +1,6 @@
+{
+  "name": "InMemory",
+  "connector": "memory",
+  "localStorage": "",
+  "file": ""
+}
