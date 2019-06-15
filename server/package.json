@@ -34,6 +34,9 @@
   "repository": {
     "type": "git"
   },
+  "scripts": {
+    "postinstall": "lb-tsc es2017 --outDir dist"
+  },
   "author": "",
   "license": "",
   "files": [
