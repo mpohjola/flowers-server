@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import { User } from './user.model';
+import { Flower } from './flower.model';
 
 @model({settings: {strict: false}})
 export class UserFlower extends Entity {
@@ -19,6 +21,12 @@ export class UserFlower extends Entity {
   age?: number;
 
   // Define well-known properties here
+
+  @belongsTo(() => User)
+  userId: string;
+
+  @belongsTo(() => Flower)
+  flowerId: number;
 
   // Indexer property to allow additional data
   [prop: string]: any;

@@ -2,5 +2,5 @@
   "name": "InMemory",
   "connector": "memory",
   "localStorage": "",
-  "file": ""
+  "file": "flowers.persistance.json"
 }

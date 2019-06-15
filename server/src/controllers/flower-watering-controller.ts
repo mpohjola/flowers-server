@@ -19,7 +19,7 @@ import {
 import {FlowerWatering} from '../models';
 import {FlowerWateringRepository} from '../repositories';
 
-export class FlowerWateringControllerController {
+export class FlowerWateringController {
   constructor(
     @repository(FlowerWateringRepository)
     public flowerWateringRepository : FlowerWateringRepository,

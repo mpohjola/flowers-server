@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import { UserFlower } from './user-flower.model';
 
 @model({settings: {strict: false}})
 export class FlowerWatering extends Entity {
@@ -12,18 +13,15 @@ export class FlowerWatering extends Entity {
     type: 'number',
     required: true,
   })
-  userFlowerId: number;
-
-  @property({
-    type: 'number',
-    required: true,
-  })
   waterAmount: number;
 
   @property({
     type: 'date',
   })
   date?: string;
+
+  @belongsTo(() => UserFlower)
+  userFlowerId: number;
 
   // Define well-known properties here
 

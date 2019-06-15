@@ -19,7 +19,7 @@ import {
 import {UserFlower} from '../models';
 import {UserFlowerRepository} from '../repositories';
 
-export class UserFlowerControllerController {
+export class UserFlowerController {
   constructor(
     @repository(UserFlowerRepository)
     public userFlowerRepository : UserFlowerRepository,
