@@ -29,13 +29,13 @@
     "migrate": "node ./dist/migrate",
     "prestart": "npm run build",
     "start": "node .",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test",
+    "pre-deb": "mkdir -p ./extra/usr/share/flowers-server && cp -R config ./extra/usr/share/flowers-server/ && npm run build",
+    "post-deb": "rm -rf extra",
+    "package-deb": "npm run pre-deb && node-deb --no-rebuild -- flowers-server dist/ index.js && npm run post-deb"
   },
   "repository": {
     "type": "git"
-  },
-  "scripts": {
-    "postinstall": "lb-tsc es2017 --outDir dist"
   },
   "author": "",
   "license": "",
@@ -55,7 +55,8 @@
     "@loopback/repository": "^1.6.1",
     "@loopback/rest": "^1.15.0",
     "@loopback/rest-explorer": "^1.2.1",
-    "@loopback/service-proxy": "^1.2.1"
+    "@loopback/service-proxy": "^1.2.1",
+    "node-deb": "^0.10.7"
   },
   "devDependencies": {
     "@loopback/build": "^1.7.1",
@@ -69,5 +70,19 @@
     "eslint-plugin-eslint-plugin": "^2.1.0",
     "eslint-plugin-mocha": "^5.3.0",
     "typescript": "~3.5.1"
+  },
+  "node_deb": {
+    "init": "systemd",
+    "extra_files": "extra",
+    "maintainer": "Mira Pohjola",
+    "group": "root",
+    "user": "root",
+    "templates": {
+      "default_variables": "templates/production-variables",
+      "postinst": "templates/postinstall.sh"
+    },
+    "entrypoints": {
+      "daemon": "flowers-server"
+    }
   }
 }
