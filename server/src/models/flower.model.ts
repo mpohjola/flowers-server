@@ -29,14 +29,14 @@ export class Flower extends Entity {
   waterFrequency?: number;
 
   @property({
-    type: 'number',
+    type: 'string',
   })
-  waterAmount?: number;
+  waterAmount?: string;
 
   @property({
-    type: 'number',
+    type: 'string',
   })
-  lifeSpan?: number;
+  lifeSpan?: string;
 
   // Define well-known properties here
 
